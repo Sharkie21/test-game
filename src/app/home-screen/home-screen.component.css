@@ -1,0 +1,26 @@
+.easy-btn{
+    height : 50;
+    width : 50;
+    font-size : 30;
+}
+
+.hard-btn{
+    height : 50;
+    width : 35;
+    font-size : 25;
+}
+
+.complex-btn{
+    height : 50;
+    width : 25;
+    font-size : 25;
+}
+
+.alphabet-box{
+    text-align: center;
+    font-weight : bold;
+    border-color: black;
+    border-width: 2;
+    margin-bottom: 5;
+    margin-top : 10
+}

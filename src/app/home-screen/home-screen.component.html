@@ -1,0 +1,20 @@
+<GridLayout #container rows="auto,*,auto,auto"  [columns]="getCharacterColumn()">
+ <GridLayout row="0" isPassThroughParentEnabled="true" [colSpan]="gridSpan" rows="auto,auto,auto" columns="*,*,*">
+    <Label row="0" col="0" horizontalAlignment="left" text="FirstName LastName" class="top-labels"></Label>
+    <Label row="0" col="2" horizontalAlignment="right" text="Time: 00:00" class="top-labels"></Label>
+    <Label row="1" col="0" horizontalAlignment="left" text="High Score: 999" class="top-labels"></Label>
+    <Label row="1" col="2" horizontalAlignment="right" text="Your Score: 555" class="top-labels"></Label>
+    <Label row="2" col="0" horizontalAlignment="center" text="Easy" class="top-labels" (tap)="setDifficulty('Easy')" [ngClass]="{'btn-red': difficulty===4}"></Label>
+    <Label row="2" col="1" horizontalAlignment="center" text="Medium" class="top-labels" (tap)="setDifficulty('Medium')" [ngClass]="{'btn-red': difficulty===5}"></Label>
+    <Label row="2" col="2" horizontalAlignment="center" text="Complex" class="top-labels" (tap)="setDifficulty('Complex')" [ngClass]="{'btn-red': difficulty===6}"></Label>
+ </GridLayout>
+ <GridLayout #gameGrid isPassThroughParentEnabled="true" row="1"  [colSpan]="gridSpan" [rows]="getGridSize()" [columns]="getGridSize()" height="{{gridSize}}">
+    <Label [row]="getGridRow(i)" [col]="getGridCol(i)" [backgroundColor]="grid"  *ngFor="let grid of gridArray; let i = index" ></Label>
+ </GridLayout>
+ <GridLayout row="1" isPassThroughParentEnabled="true" [colSpan]="gridSpan" [rows]="getGridSize()" [columns]="getGridSize()" height="{{gridSize}}">
+ </GridLayout>
+ <ng-template ngFor let-i="index" let-alphabet [ngForOf]="characterArray">
+    <Label width="50" isPassThroughParentEnabled="true" verticalAlignment="center" [color]="alphabet.alphaColor" [backgroundColor]="alphabet.backColor" horizontalAlignment="center" [row]="getRow(i)" [col]="getCol(i)" [text]="alphabet.alphabet" class="alphabet-box" (pan)="onPan($event)"
+    [ngClass]="{'easy-btn': difficulty===4, 'hard-btn': difficulty===5, 'complex-btn': difficulty===6 }"></Label>
+ </ng-template >
+</GridLayout>
